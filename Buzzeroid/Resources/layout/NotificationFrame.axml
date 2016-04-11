@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="?attr/dialogPreferredPadding"
+    android:id="@+id/notifFrame"
+    android:elevation="@dimen/design_fab_elevation"
+    android:background="?android:attr/windowBackground"
+    android:minWidth="300dp"
+    android:clickable="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_gravity="center">
+        <TextView
+            android:text="Ring Ring!"
+            android:id="@+id/notifTitle"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="?attr/colorAccent"
+            android:layout_marginBottom="8dp" />
+        <TextView
+            android:text="Someone is at the door, swipe to ignore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:layout_gravity="center" />
+        <Space
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:id="@+id/fabPlaceholder"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</FrameLayout>

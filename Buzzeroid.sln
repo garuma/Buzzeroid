@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buzzeroid", "Buzzeroid\Buzzeroid.csproj", "{1EDDA3D7-1AC5-408A-B37B-FBE7B9D97457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amqp.Lite.Android", "Amqp.Lite.Android\Amqp.Lite.Android.csproj", "{CD350D98-D891-4358-869E-ED873FC12B64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EDDA3D7-1AC5-408A-B37B-FBE7B9D97457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EDDA3D7-1AC5-408A-B37B-FBE7B9D97457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EDDA3D7-1AC5-408A-B37B-FBE7B9D97457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EDDA3D7-1AC5-408A-B37B-FBE7B9D97457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD350D98-D891-4358-869E-ED873FC12B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD350D98-D891-4358-869E-ED873FC12B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD350D98-D891-4358-869E-ED873FC12B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD350D98-D891-4358-869E-ED873FC12B64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

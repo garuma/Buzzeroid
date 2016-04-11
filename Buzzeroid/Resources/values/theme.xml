@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+	<color name="motionPrimary">#9C27B0</color>
+	<color name="motionPrimaryDark">#6A1B9A</color>
+	<color name="motionAccent">#C51162</color>
+	
+	<style name="MotionEvolveThemeBase" parent="@style/Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">@color/motionPrimary</item>
+		<item name="colorPrimaryDark">@color/motionPrimaryDark</item>
+		<item name="colorAccent">@color/motionAccent</item>
+	</style>
+
+	<style name="MotionEvolveTheme" parent="@style/MotionEvolveThemeBase" />
+</resources>

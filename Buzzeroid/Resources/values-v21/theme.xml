@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+	<style name="MotionEvolveTheme" parent="@style/MotionEvolveThemeBase">
+		<item name="android:colorPrimary">@color/motionPrimary</item>
+		<item name="android:colorPrimaryDark">@color/motionPrimaryDark</item>
+		<item name="android:colorAccent">@color/motionAccent</item>
+	</style>
+</resources>

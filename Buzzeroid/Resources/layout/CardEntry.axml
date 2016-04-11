@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardView1"
+        android:layout_margin="8dp"
+        app:contentPadding="8dp">
+        <ImageView
+            android:src="@drawable/ic_lock"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/lockIcon"
+            android:layout_gravity="center_vertical"
+            android:tint="@color/lock_color_list" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout1"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center_vertical">
+            <TextView
+                android:text="Monday, April 4, 2016"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dateEntry"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            <TextView
+                android:text="@string/refused_buzz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/descEntry"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        </LinearLayout>
+        <Button
+            android:text="Apologize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/apologizeButton"
+            android:layout_gravity="right"
+            style="?attr/buttonBarPositiveButtonStyle" />
+    </android.support.v7.widget.CardView>
+</FrameLayout>
