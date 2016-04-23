@@ -87,7 +87,7 @@ namespace Buzzeroid
 			await connection.CreateTableAsync<HistoryEntry> ();
 			await connection.InsertAsync (entry);
 			entriesReversed.Add (entry);
-			this.NotifyItemInserted (GetReversedPosition (0));
+			this.NotifyItemInserted (0);
 		}
 
 		public override RecyclerView.ViewHolder OnCreateViewHolder (ViewGroup parent, int viewType)
