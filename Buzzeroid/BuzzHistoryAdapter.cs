@@ -119,12 +119,17 @@ namespace Buzzeroid
 			Button apologizeButton;
 			ImageView lockIcon;
 
+			static EventHandler clickHandler;
+			static DeveloperExcuseApi api;
+
 			public ViewHolder (View view) : base (view)
 			{
 				dateEntry = view.FindViewById<TextView> (Resource.Id.dateEntry);
 				descEntry = view.FindViewById<TextView> (Resource.Id.descEntry);
 				apologizeButton = view.FindViewById<Button> (Resource.Id.apologizeButton);
 				lockIcon = view.FindViewById<ImageView> (Resource.Id.lockIcon);
+				if (clickHandler == null)
+					clickHandler = HandleApologizeClicked;
 			}
 
 			public void SetData (HistoryEntry entry)
@@ -146,6 +151,23 @@ namespace Buzzeroid
 				lockIcon.Enabled = entry.DidOpen;
 
 				apologizeButton.Visibility = entry.DidOpen ? ViewStates.Invisible : ViewStates.Visible;
+				apologizeButton.Click += clickHandler;
+			}
+
+			async void HandleApologizeClicked (object sender, EventArgs e)
+			{
+				try {
+					if (api == null)
+						api = new DeveloperExcuseApi ();
+					var excuse = await api.GetNextExcuseAsync ();
+					var intent = new Intent (Intent.ActionSend)
+						.SetType ("text/plain")
+						.PutExtra (Intent.ExtraText, excuse);
+					var chooser = Intent.CreateChooser (intent, "Send excuse to");
+					ItemView.Context.StartActivity (chooser);
+				} catch (Exception ex) {
+					Android.Util.Log.Error ("Apologize", ex.ToString ());
+				}
 			}
 		}
 	}
