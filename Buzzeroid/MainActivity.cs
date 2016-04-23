@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 using Android.App;
 using Android.Views;
@@ -21,6 +22,7 @@ namespace Buzzeroid
 	public class MainActivity : AppCompatActivity
 	{
 		BuzzerApi buzzerApi;
+		Stopwatch openedTime = new Stopwatch ();
 
 		CoordinatorLayout mainCoordinator;
 		CheckableFab fab;
@@ -51,7 +53,9 @@ namespace Buzzeroid
 			/* Assign notification behavior (aka swipe-to-dismiss)
 			 * 
 			var lp = (CoordinatorLayout.LayoutParams)notificationFrame.LayoutParameters;
-			lp.Behavior = new NotificationBehavior ();
+			var nb = new NotificationBehavior ();
+			nb.Dismissed += (sender, e) => AddNewBuzzEntry (wasOpened: false);
+			lp.Behavior = nb;
 			notificationFrame.LayoutParameters = lp;*/
 
 			notificationFrame.Visibility = ViewStates.Invisible;
@@ -127,8 +131,14 @@ namespace Buzzeroid
 
 		async void OnFabBuzzClick (object sender, System.EventArgs e)
 		{
+			if (fab.Checked)
+				openedTime.Restart ();
 			var api = await EnsureApi ();
-			await api.SetBuzzerStateAsync (chked = !chked);
+			await api.SetBuzzerStateAsync (fab.Checked);
+			if (!fab.Checked && openedTime.IsRunning) {
+				openedTime.Stop ();
+				AddNewBuzzEntry (wasOpened: true, duration: openedTime.Elapsed);
+			}
 		}
 
 		async void ProcessFutureErrorStates (BuzzerApi api)
@@ -138,6 +148,19 @@ namespace Buzzeroid
 				if (!result)
 					Snackbar.Make (mainCoordinator, "Failed to send buzz", Snackbar.LengthLong)
 							.Show ();
+			}
+		}
+
+		async void AddNewBuzzEntry (bool wasOpened, TimeSpan? duration = null)
+		{
+			try {
+				await adapter.AddNewEntryAsync (new HistoryEntry {
+					DidOpen = wasOpened,
+					EventDate = DateTime.UtcNow,
+					DoorOpenedTime = duration ?? TimeSpan.Zero
+				});
+			} catch (Exception e) {
+				Android.Util.Log.Error ("NewBuzzEntry", e.ToString ());
 			}
 		}
 	}

@@ -23,6 +23,8 @@ namespace Buzzeroid
 {
 	public class NotificationBehavior : SwipeDismissBehavior, IOnDismissListener
 	{
+		public event EventHandler Dismissed;
+
 		public NotificationBehavior ()
 		{
 			this.SetSwipeDirection (SwipeDismissBehavior.SwipeDirectionStartToEnd);
@@ -36,6 +38,8 @@ namespace Buzzeroid
 			view.Alpha = 1;
 			view.Visibility = ViewStates.Invisible;
 			view.RequestLayout ();
+
+			Dismissed?.Invoke (this, EventArgs.Empty);
 		}
 
 		void IOnDismissListener.OnDragStateChanged (int state)
