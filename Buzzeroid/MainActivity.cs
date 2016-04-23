@@ -23,14 +23,12 @@ namespace Buzzeroid
 		BuzzerApi buzzerApi;
 
 		CoordinatorLayout mainCoordinator;
-		FloatingActionButton fab;
+		CheckableFab fab;
 		RecyclerView recycler;
 
 		BuzzHistoryAdapter adapter;
 
 		FrameLayout notificationFrame;
-
-		bool chked;
 
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
@@ -43,13 +41,36 @@ namespace Buzzeroid
 
 			mainCoordinator = FindViewById<CoordinatorLayout> (Resource.Id.coordinatorLayout);
 
-			fab = FindViewById<FloatingActionButton> (Resource.Id.fabBuzz);
+			// SETUP NOTIFICATION FRAME
+
+			notificationFrame = FindViewById<FrameLayout> (Resource.Id.notifFrame);
+
+			var title = notificationFrame.FindViewById<TextView> (Resource.Id.notifTitle);
+			title.Typeface = Typeface.CreateFromAsset (Resources.Assets, "DancingScript.ttf");
+
+			/* Assign notification behavior (aka swipe-to-dismiss)
+			 * 
+			var lp = (CoordinatorLayout.LayoutParams)notificationFrame.LayoutParameters;
+			lp.Behavior = new NotificationBehavior ();
+			notificationFrame.LayoutParameters = lp;*/
+
+			notificationFrame.Visibility = ViewStates.Invisible;
+
+			// SETUP FLOATING ACTION BUTTON
+
+			fab = FindViewById<CheckableFab> (Resource.Id.fabBuzz);
 			fab.Click += OnFabBuzzClick;
+
+			/* Craft curved motion into FAB
+			 * 
 			var lp = (CoordinatorLayout.LayoutParams)fab.LayoutParameters;
 			lp.Behavior = new FabMoveBehavior ();
-			fab.LayoutParameters = lp;
+			fab.LayoutParameters = lp;*/
 
-			InitializeNotificationFrame ();
+			/* Spice up the FAB icon story
+			 *
+			fab.SetImageResource (Resource.Drawable.ic_fancy_fab_icon);
+			*/
 
 			recycler = FindViewById<RecyclerView> (Resource.Id.recycler);
 			recycler.HasFixedSize = true;
@@ -83,20 +104,6 @@ namespace Buzzeroid
 				return true;
 			}
 			return base.OnOptionsItemSelected (item);
-		}
-
-		void InitializeNotificationFrame ()
-		{
-			notificationFrame = FindViewById<FrameLayout> (Resource.Id.notifFrame);
-
-			var title = notificationFrame.FindViewById<TextView> (Resource.Id.notifTitle);
-			title.Typeface = Typeface.CreateFromAsset (Resources.Assets, "DancingScript.ttf");
-
-			var lp = (CoordinatorLayout.LayoutParams)notificationFrame.LayoutParameters;
-			lp.Behavior = new NotificationBehavior ();
-			notificationFrame.LayoutParameters = lp;
-
-			notificationFrame.Visibility = ViewStates.Invisible;
 		}
 
 		async void InitializeAdapter ()

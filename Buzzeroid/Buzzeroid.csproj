@@ -74,9 +74,9 @@
     <Compile Include="Constants.cs" />
     <Compile Include="BuzzerApi.cs" />
     <Compile Include="BuzzHistoryAdapter.cs" />
-    <Compile Include="NotificationBehavior.cs" />
-    <Compile Include="FabMoveBehavior.cs" />
     <Compile Include="CheckableFab.cs" />
+    <Compile Include="Behaviors\FabMoveBehavior.cs" />
+    <Compile Include="Behaviors\NotificationBehavior.cs" />
     <Compile Include="DeveloperExcuseApi.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -108,7 +108,7 @@
     <AndroidResource Include="Resources\drawable\anim_vector_finger_to_door.xml" />
     <AndroidResource Include="Resources\anim\buzzer_finger_move.xml" />
     <AndroidResource Include="Resources\anim\buzzer_button_compress.xml" />
-    <AndroidResource Include="Resources\drawable\ic_fab_icon.xml" />
+    <AndroidResource Include="Resources\drawable\ic_fancy_fab_icon.xml" />
     <AndroidResource Include="Resources\anim\buzzer_fade_out.xml" />
     <AndroidResource Include="Resources\anim\door_trace_path.xml" />
     <AndroidResource Include="Resources\anim\door_knob_fade_in.xml" />
@@ -122,6 +122,7 @@
     <Folder Include="Resources\color\" />
     <Folder Include="Resources\menu\" />
     <Folder Include="Resources\anim\" />
+    <Folder Include="Behaviors\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Amqp.Lite.Android\Amqp.Lite.Android.csproj">
