@@ -63,6 +63,8 @@ namespace Buzzeroid
 			var dbPath = DbPath;
 			var connection = new SQLiteAsyncConnection (dbPath);
 			await connection.CreateTableAsync<HistoryEntry> ();
+			if (await connection.Table<HistoryEntry> ().CountAsync () > 0)
+				return;
 			await connection.InsertAllAsync (new HistoryEntry [] {
 				new HistoryEntry { DidOpen = false, DoorOpenedTime = TimeSpan.Zero, EventDate = new DateTime (2016, 01, 04) },
 				new HistoryEntry { DidOpen = true, DoorOpenedTime = TimeSpan.FromMinutes (2), EventDate = new DateTime (2016, 01, 03) },
