@@ -46,19 +46,18 @@ namespace Buzzeroid
 			// SETUP NOTIFICATION FRAME
 
 			notificationFrame = FindViewById<FrameLayout> (Resource.Id.notifFrame);
+			notificationFrame.Visibility = ViewStates.Invisible;
 
 			var title = notificationFrame.FindViewById<TextView> (Resource.Id.notifTitle);
 			title.Typeface = Typeface.CreateFromAsset (Resources.Assets, "DancingScript.ttf");
 
 			/* Assign notification behavior (aka swipe-to-dismiss)
-			 * 
+			 *
 			var lp = (CoordinatorLayout.LayoutParams)notificationFrame.LayoutParameters;
 			var nb = new NotificationBehavior ();
 			nb.Dismissed += (sender, e) => AddNewBuzzEntry (wasOpened: false);
 			lp.Behavior = nb;
 			notificationFrame.LayoutParameters = lp;*/
-
-			notificationFrame.Visibility = ViewStates.Invisible;
 
 			// SETUP FLOATING ACTION BUTTON
 
@@ -66,15 +65,14 @@ namespace Buzzeroid
 			fab.Click += OnFabBuzzClick;
 
 			/* Craft curved motion into FAB
-			 * 
-			var lp = (CoordinatorLayout.LayoutParams)fab.LayoutParameters;
+			 *
+			lp = (CoordinatorLayout.LayoutParams)fab.LayoutParameters;
 			lp.Behavior = new FabMoveBehavior ();
 			fab.LayoutParameters = lp;*/
 
 			/* Spice up the FAB icon story
 			 *
-			fab.SetImageResource (Resource.Drawable.ic_fancy_fab_icon);
-			*/
+			fab.SetImageResource (Resource.Drawable.ic_fancy_fab_icon);*/
 
 			recycler = FindViewById<RecyclerView> (Resource.Id.recycler);
 			recycler.HasFixedSize = true;
