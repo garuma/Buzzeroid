@@ -56,6 +56,12 @@ namespace Buzzeroid
 			imgState = Drawable.GetConstantState ();
 		}
 
+		public override void SetImageResource (int resId)
+		{
+			base.SetImageResource (resId);
+			imgState = Drawable.GetConstantState ();
+		}
+
 		public override bool PerformClick ()
 		{
 			Toggle ();
