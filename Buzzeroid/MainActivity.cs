@@ -138,6 +138,10 @@ namespace Buzzeroid
 			if (!fab.Checked && openedTime.IsRunning) {
 				openedTime.Stop ();
 				AddNewBuzzEntry (wasOpened: true, duration: openedTime.Elapsed);
+				if (notificationFrame.Visibility == ViewStates.Visible) {
+					notificationFrame.Visibility = ViewStates.Invisible;
+					notificationFrame.TranslationX = 1;
+				}
 			}
 		}
 
