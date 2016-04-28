@@ -108,13 +108,14 @@
     <AndroidResource Include="Resources\drawable\anim_vector_finger_to_door.xml" />
     <AndroidResource Include="Resources\anim\buzzer_finger_move.xml" />
     <AndroidResource Include="Resources\anim\buzzer_button_compress.xml" />
-    <AndroidResource Include="Resources\drawable\ic_fancy_fab_icon.xml" />
     <AndroidResource Include="Resources\anim\buzzer_fade_out.xml" />
     <AndroidResource Include="Resources\anim\door_trace_path.xml" />
     <AndroidResource Include="Resources\anim\door_knob_fade_in.xml" />
     <AndroidResource Include="Resources\anim\door_shadow_grow.xml" />
     <AndroidResource Include="Resources\anim\door_knob_move.xml" />
     <AndroidResource Include="Resources\anim\door_shadow_appear.xml" />
+    <AndroidResource Include="Resources\drawable\ic_sad_fab_icon.xml" />
+    <AndroidResource Include="Resources\drawable-v21\ic_fancy_fab_icon.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -123,6 +124,7 @@
     <Folder Include="Resources\menu\" />
     <Folder Include="Resources\anim\" />
     <Folder Include="Behaviors\" />
+    <Folder Include="Resources\drawable-v21\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Amqp.Lite.Android\Amqp.Lite.Android.csproj">

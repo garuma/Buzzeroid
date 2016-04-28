@@ -35,5 +35,5 @@
         android:layout_gravity="end|bottom"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
-        android:src="@drawable/ic_finger_buzzer" />
+        android:src="@drawable/ic_sad_fab_icon" />
 </android.support.design.widget.CoordinatorLayout>

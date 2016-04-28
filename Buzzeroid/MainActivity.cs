@@ -52,12 +52,12 @@ namespace Buzzeroid
 			title.Typeface = Typeface.CreateFromAsset (Resources.Assets, "DancingScript.ttf");
 
 			/* Assign notification behavior (aka swipe-to-dismiss)
-			 *
+			 */
 			var lp = (CoordinatorLayout.LayoutParams)notificationFrame.LayoutParameters;
 			var nb = new NotificationBehavior ();
 			nb.Dismissed += (sender, e) => AddNewBuzzEntry (wasOpened: false);
 			lp.Behavior = nb;
-			notificationFrame.LayoutParameters = lp;*/
+			notificationFrame.LayoutParameters = lp;
 
 			// SETUP FLOATING ACTION BUTTON
 
@@ -65,14 +65,15 @@ namespace Buzzeroid
 			fab.Click += OnFabBuzzClick;
 
 			/* Craft curved motion into FAB
-			 *
+			 */
 			lp = (CoordinatorLayout.LayoutParams)fab.LayoutParameters;
 			lp.Behavior = new FabMoveBehavior ();
-			fab.LayoutParameters = lp;*/
+			fab.LayoutParameters = lp;
 
 			/* Spice up the FAB icon story
-			 *
-			fab.SetImageResource (Resource.Drawable.ic_fancy_fab_icon);*/
+			 */
+			if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+				fab.SetImageResource (Resource.Drawable.ic_fancy_fab_icon);
 
 			recycler = FindViewById<RecyclerView> (Resource.Id.recycler);
 			recycler.HasFixedSize = true;
