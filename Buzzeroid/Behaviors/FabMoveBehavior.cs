@@ -28,11 +28,6 @@ namespace Buzzeroid
 
 		IInterpolator interpolator;
 
-		public FabMoveBehavior ()
-		{
-			interpolator = PathInterpolatorCompat.Create (0, .47f, .47f, 1);
-		}
-
 		public override bool LayoutDependsOn (CoordinatorLayout parent, Java.Lang.Object child, View dependency)
 		{
 			if (dependency.Id == Resource.Id.notifFrame)
@@ -46,7 +41,8 @@ namespace Buzzeroid
 				var fab = child.JavaCast<FloatingActionButton> ();
 				bool isNowVisibility = dependency.Visibility == ViewStates.Visible;
 
-				// If the notification is still invisible, the changes are simply positioning, recalculate distances
+				// If the notification is still invisible, the changes are simply positioning.
+				// Initialize everything by recalculating distances
 				if (!previousVisibility && !isNowVisibility) {
 					var placeholder = dependency.FindViewById (Resource.Id.fabPlaceholder);
 					var pos = new int [2];
@@ -86,6 +82,16 @@ namespace Buzzeroid
 				}
 
 				// Carry out the initial curved motion in
+				/* HACK: since path-based object animators are not yet available
+				 * in support, we use the fact that PathInterpolator is to craft
+				 * something similar. Think of it as creating the following cubic
+				 * bezier (http://cubic-bezier.com/#0,.47,.47,1) and rotating the
+				 * graph 90° to the left. X axis becomes the graph and Y axis is
+				 * simply a vertical line.
+				 */
+				if (interpolator == null)
+					interpolator = PathInterpolatorCompat.Create (0, .47f, .47f, 1);
+
 				var currentTranslation = Math.Abs (dependency.TranslationX);
 				var ratio = (minX - currentTranslation) / (float)minX;
 				fab.TranslationY = distanceY * ratio;
