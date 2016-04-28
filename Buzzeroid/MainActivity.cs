@@ -132,8 +132,12 @@ namespace Buzzeroid
 		{
 			if (fab.Checked)
 				openedTime.Restart ();
-			var api = await EnsureApi ();
-			await api.SetBuzzerStateAsync (fab.Checked);
+			/* You can uncomment the following 2 lines if you want to
+			 * test the IoT Hub part of the project, see companion
+			 * BuzzerPi app in my GitHub repository.
+			 */
+			// var api = await EnsureApi ();
+			// await api.SetBuzzerStateAsync (fab.Checked);
 			if (!fab.Checked && openedTime.IsRunning) {
 				openedTime.Stop ();
 				AddNewBuzzEntry (wasOpened: true, duration: openedTime.Elapsed);
