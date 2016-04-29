@@ -32,7 +32,7 @@ namespace Buzzeroid
 				connectionFactory = new ConnectionFactory ();
 			var address = new Address (Constants.HubHostName, 5671, null, null);
 			var client = await connectionFactory.CreateAsync (address);
-			var cbs = await PutCbsToken (client, Constants.HubHostName, Constants.MqttPassword, Constants.Audience);
+			var cbs = await PutCbsToken (client, Constants.HubHostName, Constants.HubPassword, Constants.Audience);
 			if (!cbs)
 				throw new InvalidOperationException ("Couldn't connect");
 			return new BuzzerApi (client);
